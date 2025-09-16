@@ -28,5 +28,15 @@ Arborescence du dossier app :
 
 <img width="267" height="343" alt="image" src="https://github.com/user-attachments/assets/a64ee8d8-a553-4b3f-a0b2-e8321d550a22" />
 
+TP2 : 
 
+Ce qui est persistant :
+La dernière route visitée (pathname) est sauvegardée dans AsyncStorage à chaque changement de page.
+Lors du prochain lancement de l’application, l’utilisateur est automatiquement redirigé vers cette dernière route.
+
+Exemple :
+Si l’utilisateur était sur /tabs/home, il revient sur /tabs/home.
+Si l’utilisateur était sur /detail/42?id=42, il revient sur /detail/42?id=42.
+
+![img.png](img.png)
 

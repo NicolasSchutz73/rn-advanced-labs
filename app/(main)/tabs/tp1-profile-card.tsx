@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import ProfileCard from '../components/ProfileCard';
+import ProfileCard from '@/components/tp1-profile-card/ProfileCard';
 
-export default function ProfileScreen() {
+export default function TP1ProfileCard() {
     return (
         <View style={styles.container}>
             <ProfileCard />
