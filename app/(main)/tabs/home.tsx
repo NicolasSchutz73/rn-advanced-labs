@@ -1,14 +1,13 @@
 import { Link } from 'expo-router';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Accueil</Text>
-      <Link href="/detail/42" style={styles.link}>
-        Aller au détail (id = 42)
-      </Link>
-
+        <Link href="/detail/42" style={styles.link}>
+          Aller au détail (id = 42)
+        </Link>
         <Link href="/tp3-forms/formik" style={styles.link}>
             Formulaire avec Formik
         </Link>

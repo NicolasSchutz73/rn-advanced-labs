@@ -55,3 +55,34 @@ Routes :
 - Focus chain : `email → password → confirm → displayName → submit`. OK
 - Submit désactivé tant que non valide. OK
 - Messages d’erreur clairs. OK
+
+
+TP4 A : zustand 
+
+impossible de continuer le tp à cause d'une erreur lié à une dépendance : 
+entry.bundle:153281 Uncaught SyntaxError: Cannot use 'import.meta' outside a module
+
+- Choix: React Hook Form (RHF) + Zod
+- Pourquoi:
+  - Performances et faible re-rendering.
+  - Validation typée via Zod, réutilisable côté UI et logique métier.
+  - Schéma centralisé unique: [`robotSchema`](validation/robotSchema.ts) et type [`Robot`](validation/robotSchema.ts).
+  - Intégration directe via zodResolver dans le formulaire: [`RobotForm`](components/RobotForm.tsx).
+
+
+## Arborescence & routes
+
+Arborescence attendue (objectif):
+```
+app/(main)/tp4A-robots/
+  index.tsx            # écran Liste des robots (avec Zustand)
+  create.tsx           # écran Création
+  edit/[id].tsx        # écran Édition
+store/
+  robotsStore.ts       # Zustand + persistance
+validation/
+  robotSchema.ts       # Zod
+components/
+  RobotForm.tsx        # formulaire réutilisable
+  RobotListItem.tsx    # item de liste (actions Edit/Delete)
+```

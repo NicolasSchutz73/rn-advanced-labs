@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { Redirect } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Redirect } from 'expo-router';
+import { useEffect, useState } from 'react';
 
 export default function Index() {
   const [initialRoute, setInitialRoute] = useState<string | null>(null);
@@ -19,7 +19,7 @@ export default function Index() {
   }, []);
 
   if (initialRoute === null) {
-    return null; // ou un écran de loading
+    return null;
   }
 
   return <Redirect href={initialRoute} />;
