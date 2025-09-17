@@ -8,6 +8,13 @@ export default function HomeScreen() {
       <Link href="/detail/42" style={styles.link}>
         Aller au détail (id = 42)
       </Link>
+
+        <Link href="/tp3-forms/formik" style={styles.link}>
+            Formulaire avec Formik
+        </Link>
+        <Link href="/tp3-forms/rhf" style={styles.link}>
+            Formulaire avec RHF
+        </Link>
     </View>
   );
 }

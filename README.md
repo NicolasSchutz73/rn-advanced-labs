@@ -40,3 +40,18 @@ Si l’utilisateur était sur /detail/42?id=42, il revient sur /detail/42?id=42.
 
 ![img.png](img.png)
 
+TP3 : 
+
+Routes : 
+- `/tabs/home` : Page d'accueil principale.
+- `/tabs/tp1-profile-card` : Affiche la carte de profil interactive ([ProfileCard](components/tp1-profile-card/ProfileCard.tsx)).
+- `/detail/[id]` : Page de détail, affiche le paramètre `id` passé dans l'URL.
+- `/tp3-forms/formik` : Formulaire d'inscription utilisant Formik ([validation](app/(main)/tp3-forms/formik/validation/schema.ts)).
+- `/tp3-forms/rhf` : Formulaire d'inscription utilisant React Hook Form ([validation](app/(main)/tp3-forms/rhf/validation/schema.ts)).
+
+## UX Mobile (checks)
+
+- Clavier ne masque rien (KAV). OK
+- Focus chain : `email → password → confirm → displayName → submit`. OK
+- Submit désactivé tant que non valide. OK
+- Messages d’erreur clairs. OK
