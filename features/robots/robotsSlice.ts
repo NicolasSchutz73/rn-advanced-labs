@@ -14,7 +14,7 @@ const robotsSlice = createSlice({
     name: 'robots',
     initialState,
     reducers: {
-        createRobot: (state, action: PayloadAction<Robot>) => {
+        createRobot: (state, action: PayloadAction<Omit<Robot, 'id'>>) => {
             const robot = action.payload;
 
             // Vérifier si le nom est unique
@@ -26,7 +26,7 @@ const robotsSlice = createSlice({
             // Générer un ID avec uuid si absent
             const newRobot: Robot = {
                 ...robot,
-                id: robot.id || uuidv4(),
+                id: uuidv4(),
             };
 
             state.items.push(newRobot);
