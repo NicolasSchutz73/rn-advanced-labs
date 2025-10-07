@@ -106,3 +106,12 @@ TP 4 :
 │  • Validation Zod               │
 │  • React Hook Form              │
 └─────────────────────────────────┘
+
+
+TP5 :
+
+## Dépendances
+- `expo-sqlite` bdd
+- `expo-file-system` (pour export/import)
+- `uuid` ids
+- `RHF + Zod` (formulaires)
