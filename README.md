@@ -106,3 +106,8 @@ TP 4 :
 │  • Validation Zod               │
 │  • React Hook Form              │
 └─────────────────────────────────┘
+
+
+TP 6 : 
+- `expo-camera` permet d'accéder à la caméra de l'appareil
+- `expo-file-system` Package qui fournit un accès aux opérations de système de fichiers sur l'appareil mobile (lecture, écriture, suppression, déplacement). Il permet de stocker localement les photos capturées, de les lire pour les afficher, ou de les supprimer, en utilisant les répertoires cache ou documents de l'application.
