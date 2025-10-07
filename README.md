@@ -55,3 +55,13 @@ Routes :
 - Focus chain : `email → password → confirm → displayName → submit`. OK
 - Submit désactivé tant que non valide. OK
 - Messages d’erreur clairs. OK
+
+
+TP 4 :
+
+## Dépendances
+- `@reduxjs/toolkit` & `react-redux`
+- `redux-persist` & `@react-native-async-storage/async-storage`
+- limite les rerendus via des champs non contrôlés, zod apporte une type‑safety inférée (z.infer) réutilisable avec RTK, 
+- l’intégration via @hookform/resolvers/zod est simple
+- (Option) `uuid` pour les id.
