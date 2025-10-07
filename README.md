@@ -43,11 +43,11 @@ Si l’utilisateur était sur /detail/42?id=42, il revient sur /detail/42?id=42.
 TP3 : 
 
 Routes : 
-- `/tabs/home` : Page d'accueil principale.
-- `/tabs/tp1-profile-card` : Affiche la carte de profil interactive ([ProfileCard](components/tp1-profile-card/ProfileCard.tsx)).
-- `/detail/[id]` : Page de détail, affiche le paramètre `id` passé dans l'URL.
-- `/tp3-forms/formik` : Formulaire d'inscription utilisant Formik ([validation](app/(main)/tp3-forms/formik/validation/schema.ts)).
-- `/tp3-forms/rhf` : Formulaire d'inscription utilisant React Hook Form ([validation](app/(main)/tp3-forms/rhf/validation/schema.ts)).
+- `/tabs/home`: Page d'accueil principale.
+- `/tabs/tp1-profile-card`: Affiche la carte de profil interactive ([ProfileCard](components/tp1-profile-card/ProfileCard.tsx)).
+- `/detail/[id]`: Page de détail, affiche le paramètre `id` passé dans l'URL.
+- `/tp3-forms/formik`: Formulaire d'inscription utilisant Formik ([validation](app/(main)/tp3-forms/formik/validation/schema.ts)).
+- `/tp3-forms/rhf`: Formulaire d'inscription utilisant React Hook Form ([validation](app/(main)/tp3-forms/rhf/validation/schema.ts)).
 
 ## UX Mobile (checks)
 
@@ -55,3 +55,54 @@ Routes :
 - Focus chain : `email → password → confirm → displayName → submit`. OK
 - Submit désactivé tant que non valide. OK
 - Messages d’erreur clairs. OK
+
+
+TP 4 :
+
+## Dépendances
+- `@reduxjs/toolkit` & `react-redux`
+- `redux-persist` & `@react-native-async-storage/async-storage`
+- limite les rerendus via des champs non contrôlés, zod apporte une type‑safety inférée (z.infer) réutilisable avec RTK, 
+- l’intégration via @hookform/resolvers/zod est simple
+- (Option) `uuid` pour les id.
+
+## Tests manuels
+
+- Create : succès / échecs (name dupliqué, year invalide). OK
+- Edit : charger, modifier, sauvegarder, retour liste. OK
+- Delete : confirmation, suppression, feedback. KO
+- Persist : créer 2 robots → redémarrer app → robots présents. OK
+
+┌─────────────────────────────────────────────────┐
+│  Redux Store (State Global)                     │
+│  ┌───────────────────────────────────────────┐  │
+│  │  robots: {                                │  │
+│  │    items: [                               │  │
+│  │      { id: "1", name: "R2D2", ... },      │  │
+│  │      { id: "2", name: "C3PO", ... }       │  │
+│  │    ]                                      │  │
+│  │  }                                        │  │
+│  └───────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────┘
+↕ useSelector / dispatch
+┌─────────────────────────────────────────────────┐
+│  index.tsx (Liste)                              │
+│  • Affiche tous les robots triés                │
+│  • Bouton + → create                            │
+│  • handleEdit → edit/[id]                       │
+│  • handleDelete → dispatch(deleteRobot)         │
+└─────────────────────────────────────────────────┘
+↓ Edit                    ↓ Create
+┌──────────────────┐      ┌──────────────────┐
+│  edit/[id].tsx   │      │  create.tsx      │
+│  • Formulaire    │      │  • Formulaire    │
+│  • pré-rempli    │      │  • vide          │
+│  • updateRobot   │      │  • createRobot   │
+└──────────────────┘      └──────────────────┘
+↓                         ↓
+┌─────────────────────────────────┐
+│  RobotForm.tsx                  │
+│  • Composant réutilisable       │
+│  • Validation Zod               │
+│  • React Hook Form              │
+└─────────────────────────────────┘

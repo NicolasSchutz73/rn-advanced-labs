@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import { Stack, usePathname } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './store';
 
 export default function RootLayout() {
     const pathname = usePathname();
@@ -20,8 +23,12 @@ export default function RootLayout() {
     }, [pathname]);
 
     return (
-        <Stack>
-            <Stack.Screen name="(main)" options={{ headerShown: false }} />
-        </Stack>
+        <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+                <Stack>
+                    <Stack.Screen name="(main)" options={{ headerShown: false }} />
+                </Stack>
+            </PersistGate>
+        </Provider>
     );
 }
